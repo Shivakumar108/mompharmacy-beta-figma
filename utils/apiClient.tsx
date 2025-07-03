@@ -3,7 +3,7 @@ interface ApiClientOptions extends RequestInit {
     body?: any;
 }
 
-const API_BASE_URL = 'http://192.168.1.91:3000';
+const API_BASE_URL = 'http://192.168.1.21:3000';
 
 async function apiClient(path: string, options: ApiClientOptions = {}) {
     const cleanPath = path.replace(/^\/+|\/+$/g, '');

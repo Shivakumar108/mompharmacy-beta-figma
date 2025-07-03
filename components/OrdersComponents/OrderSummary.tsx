@@ -92,20 +92,24 @@ export default function OrderSummary({
                 <Text style={styles.discountValue}>–₹{discount.toFixed(2)}</Text>
               </View>
 
+              {tipAmount > 0 && (
               <View style={styles.summaryRow}>
                 <Text style={styles.summaryLabel}>Tip</Text>
                 <Text style={styles.summaryValue}>₹{tipAmount.toFixed(2)}</Text>
               </View>
+              )}
 
               <View style={[styles.summaryRow, styles.totalRow]}>
                 <Text style={styles.totalLabel}>Total</Text>
                 <Text style={styles.totalValue}>₹{total}</Text>
               </View>
 
-              <View style={styles.summaryRow}>
-                <Text style={styles.payByLabel}>Pay By</Text>
-                <Text style={styles.cod}>COD/TNPL</Text>
-              </View>
+              {order?.paymentMethod === 'COD' && (
+                <View style={styles.summaryRow}>
+                  <Text style={styles.payByLabel}>Pay By</Text>
+                  <Text style={styles.cod}>COD/TNPL</Text>
+                </View>
+              )}
             </View>
           </View>
         </View>

@@ -145,7 +145,12 @@ export default function TrackOrder() {
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.contentContainer}>
         <View style={styles.headerRow}>
-          <MaterialIcons name='arrow-back' size={24} color='#00a99d' style={styles.backButton} onPress={() => router.back()} />
+          <TouchableOpacity 
+            onPress={() => router.replace('/BottomNavbar/home')}
+            style={styles.backButton}
+          >
+            <MaterialIcons name='arrow-back' size={24} color='#00a99d' />
+          </TouchableOpacity>
           <Text style={styles.cartText}>Track Order</Text>
         </View>
         <View style={trackPageStyles.cor}>
@@ -229,9 +234,10 @@ const styles = StyleSheet.create({
   },
   headerRow: {
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
+    paddingVertical: 20
   },
-  contentContainer: { flex: 1, backgroundColor: 'white', marginTop: 20 },
+  contentContainer: { flex: 1, backgroundColor: 'white' },
   loadingContainer: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'white' },
   errorContainer: { flex: 1, justifyContent: 'center', alignItems: 'center', padding: 20 },
   errorText: { color: 'red', marginBottom: 10, textAlign: 'center' },
@@ -268,7 +274,7 @@ const trackPageStyles = StyleSheet.create({
     margin: 10,
     borderRadius: 15,
     borderWidth: 2,
-    borderColor: "#00a99d",
+    borderColor: "#d5ece9",
     paddingBottom: 15,
     backgroundColor: "white",
   },

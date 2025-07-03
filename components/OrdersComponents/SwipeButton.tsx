@@ -2,12 +2,12 @@
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import React, { useRef, useState } from 'react';
 import {
-    Animated,
-    Dimensions,
-    PanResponder,
-    StyleSheet,
-    Text,
-    View
+  Animated,
+  Dimensions,
+  PanResponder,
+  StyleSheet,
+  Text,
+  View
 } from 'react-native';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
@@ -102,7 +102,7 @@ export default SwipeToConfirm;
 const styles = StyleSheet.create({
   container: {
     position: 'absolute',
-    bottom: 20,
+    bottom: -10,
     left: 0,
     right: 0,
     alignItems: 'center',

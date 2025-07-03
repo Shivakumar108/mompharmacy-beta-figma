@@ -26,6 +26,7 @@ export default function PaymentPop({
 }) {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const translateY = useRef(new Animated.Value(0)).current;
+  const [isSwipeButtonReady, setIsSwipeButtonReady] = useState(false);
 
 
   const panResponder = useRef(
@@ -52,6 +53,13 @@ export default function PaymentPop({
   useEffect(() => {
     if (visible) {
       translateY.setValue(0);
+      // Add a small delay to ensure the component is fully mounted
+      const timer = setTimeout(() => {
+        setIsSwipeButtonReady(true);
+      }, 100);
+      return () => clearTimeout(timer);
+    } else {
+      setIsSwipeButtonReady(false);
     }
   }, [visible]);
 
@@ -155,16 +163,19 @@ export default function PaymentPop({
               />
             </TouchableOpacity>
 
-            <SwipeButton
-              visible={visible}
-              onClose={onClose}
-              onConfirm={() => {
-                if (selectedOption) {
-                  onPay(selectedOption);
-                  onClose();
-                }
-              }}
-            />
+            <View style={{ height: 80, width: '100%' }}>
+              <SwipeButton
+                key={selectedOption || 'initial'}
+                visible={visible && isSwipeButtonReady}
+                onClose={onClose}
+                onConfirm={() => {
+                  if (selectedOption) {
+                    onPay(selectedOption);
+                    onClose();
+                  }
+                }}
+              />
+            </View>
           </Animated.View>
         </View>
       </TouchableWithoutFeedback>
